@@ -62,4 +62,28 @@ describe "Bubble Sort" do
     end
   end
 
+  describe "#insertion_sort" do
+    it 'sorts correctly' do
+      array = [1,5,5,6,7,8,2,3,5,7,8,7,432,4,6,6,2,3,5,6,3]
+      expect(insertion_sort(array)).to eq array.sort
+    end
+
+    it 'sorts correctly' do
+      array = [1,5,23445,6,7,83244,2,3,5,4537,8,7,432,4,3456,6,2,335,525,6,3]
+      expect(insertion_sort(array)).to eq array.sort
+    end
+  end
+
+  describe "#insertion_sort_two" do
+    it 'sorts correctly' do
+      array = [1,5,5,6,7,8,2,3,5,7,8,7,432,4,6,6,2,3,5,6,3]
+      expect(insertion_sort_two(array)).to eq array.sort
+    end
+
+    it 'sorts correctly' do
+      array = [1,5,23445,6,7,83244,2,3,5,4537,8,7,432,4,3456,6,2,335,525,6,3]
+      expect(insertion_sort_two(array)).to eq array.sort
+    end
+  end
+
 end
