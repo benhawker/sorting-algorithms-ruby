@@ -3,8 +3,7 @@
 
 # array = [1,4,3,6,7,5]
 
-##Solves a difference problem - muppet.
-def solve_something(array)
+def solve(array)
   largest_diff = array[1] - array[0]
   result = []
 
