@@ -70,11 +70,13 @@ def grid_builder(m, n)
   ## Builds a grid MXN filled with 1's.
   grid = Array.new(m) { Array.new(n) {1} }
   ## m times randomly populate it with some 0's
-  #m.times { grid[rand(m)][rand(n)] = 0 }
-  grid[0][0] = 0
-  grid[1][0] = 0
-  grid[2][0] = 0
-  grid[3][0] = 0
+  m.times { grid[rand(m)][rand(n)] = 0 }
+
+  ## Using for manual testing
+  # grid[0][0] = 0
+  # grid[1][0] = 0
+  # grid[2][0] = 0
+  # grid[3][0] = 0
 
   cols_to_zero = []
   rows_to_zero = []
@@ -103,7 +105,7 @@ def grid_builder(m, n)
     end
   end
 
-  ## For each of the values in the rows_to_zero array amend the existing grid with map!
+  ## For each of the values in the rows_to_zero array amend the existing grid using map!
   for i in rows_to_zero.uniq
     grid[0].map! { |element| 0 }
   end
@@ -115,7 +117,51 @@ end
 #? :(
 
 #Rotate a 2-D NxN matrix by 90 degrees
-## To follow.
+def rotate(n)
+  ## Builds a grid NXN filled with 0's.
+  grid = Array.new(n) { Array.new(n) {0} }
+  ## n times randomly populate it with some 1's
+  #n.times { grid[rand(n)][rand(n)] = 1 }
+
+  #For testing.
+  grid[0][0] = 1
+  grid[0][1] = 2
+  grid[0][2] = 3
+  grid[0][3] = 4
+  grid[0][4] = 5
+  grid[1][0] = 1
+  grid[1][1] = 2
+  grid[1][2] = 3
+  grid[1][3] = 4
+  grid[1][4] = 5
+  # grid[2][0] = 1
+  # grid[2][1] = 2
+  # grid[2][2] = 3
+  # grid[2][3] = 4
+  # grid[2][4] = 5
+  grid[3][0] = 1
+  grid[3][1] = 2
+  grid[3][2] = 3
+  grid[3][3] = 4
+  grid[3][4] = 5
+  grid[4][0] = 1
+  grid[4][1] = 2
+  grid[4][2] = 3
+  grid[4][3] = 4
+  grid[4][4] = 5
+
+
+  ## Builds new grid for output
+  new_grid = Array.new(n) { Array.new(n) }
+
+  ## Iterate through each array/row
+  grid.each_with_index do |array, row|
+    ## Then by each col of that row
+    array.each_with_index do |element, col_index|
+      new_grid[col_index][-(row+1)] = element
+    end
+  end
+end
 
 #Now do it in-place
 ## To follow.
