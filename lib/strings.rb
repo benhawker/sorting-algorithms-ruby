@@ -20,9 +20,13 @@ def all_unique_two?(string)
   end
 end
 
-## Reverse a string in place
-
 ## Given two strings, write a method to determine if one string is a permutation of the other
+## Needs further logic - this is very wrong.
+def permutation?(string_one, string_two)
+  string_one = string_one.downcase.chars.sort
+  string_two = string_two.downcase.chars.sort
+  string_one != string_two ? true : false
+end
 
 
 ## Write a function that compresses a string from aaabbcc => a3b2c2
@@ -60,6 +64,58 @@ end
 
 
 #Given a 2-D grid of size MxN, make every row and column that has a 0 in it become all 0s
+## Ripe for a refactoring into a few separate methods.
+## Needs testing.
+def grid_builder(m, n)
+  ## Builds a grid MXN filled with 1's.
+  grid = Array.new(m) { Array.new(n) {1} }
+  ## m times randomly populate it with some 0's
+  #m.times { grid[rand(m)][rand(n)] = 0 }
+  grid[0][0] = 0
+  grid[1][0] = 0
+  grid[2][0] = 0
+  grid[3][0] = 0
+
+  cols_to_zero = []
+  rows_to_zero = []
+
+  #Go through columns
+  grid.each do |array|
+    array.each_with_index do |element, index|
+      if element == 0
+        cols_to_zero << index
+      end
+    end
+  end
+
+  #Go through Rows
+  grid.each_with_index do |array, index|
+    if array.include?(0)
+      rows_to_zero << index
+    end
+  end
+
+  ## Make the deletions
+  ## For each of the columns in cols_to_zero amend the grid to zero's.
+  for i in cols_to_zero.uniq
+    0.upto(grid.size - 1) do |row|
+      grid[row][i] = 0
+    end
+  end
+
+  ## For each of the values in the rows_to_zero array amend the existing grid with map!
+  for i in rows_to_zero.uniq
+    grid[0].map! { |element| 0 }
+  end
+
+  grid
+end
+
 #Do it now with O(1) space complexity
+#? :(
+
 #Rotate a 2-D NxN matrix by 90 degrees
+## To follow.
+
 #Now do it in-place
+## To follow.
