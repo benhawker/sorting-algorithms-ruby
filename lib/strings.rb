@@ -120,37 +120,6 @@ end
 def rotate(n)
   ## Builds a grid NXN filled with 0's.
   grid = Array.new(n) { Array.new(n) {0} }
-  ## n times randomly populate it with some 1's
-  #n.times { grid[rand(n)][rand(n)] = 1 }
-
-  #For testing.
-  grid[0][0] = 1
-  grid[0][1] = 2
-  grid[0][2] = 3
-  grid[0][3] = 4
-  grid[0][4] = 5
-  grid[1][0] = 1
-  grid[1][1] = 2
-  grid[1][2] = 3
-  grid[1][3] = 4
-  grid[1][4] = 5
-  # grid[2][0] = 1
-  # grid[2][1] = 2
-  # grid[2][2] = 3
-  # grid[2][3] = 4
-  # grid[2][4] = 5
-  grid[3][0] = 1
-  grid[3][1] = 2
-  grid[3][2] = 3
-  grid[3][3] = 4
-  grid[3][4] = 5
-  grid[4][0] = 1
-  grid[4][1] = 2
-  grid[4][2] = 3
-  grid[4][3] = 4
-  grid[4][4] = 5
-
-
   ## Builds new grid for output
   new_grid = Array.new(n) { Array.new(n) }
 
@@ -161,7 +130,11 @@ def rotate(n)
       new_grid[col_index][-(row+1)] = element
     end
   end
+  new_grid
 end
+
+##+++++++
 
 #Now do it in-place
 ## To follow.
+

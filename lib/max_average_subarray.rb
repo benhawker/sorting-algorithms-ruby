@@ -33,6 +33,7 @@
   # [1,2,3,4,5,6,7]
   # [1,2,3,4] [2,3,4,5] [3,4,5,6] [4,5,6,7]
 
+## Solves the given test case.
 def max_average_sub_array(array, size)
   ##Create some empty subarrays of the size
   ## Each sub array size is size(k)
