@@ -113,8 +113,6 @@ def grid_builder(m, n)
   grid
 end
 
-#Do it now with O(1) space complexity
-#? :(
 
 #Rotate a 2-D NxN matrix by 90 degrees
 def rotate(n)
