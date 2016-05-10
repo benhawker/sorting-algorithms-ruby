@@ -18,9 +18,7 @@ def solve(array)
   end
 end
 
-
 ##### +++++++ ######
-
 
 ## Don't sort and just iterate through until you find it.
 def solve_again(array)
