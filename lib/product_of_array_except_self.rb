@@ -11,12 +11,12 @@ def solve(array)
   output = Array.new(array.size)
 
   array.each_index do |i|
-    output[i] = sum(array, i)
+    output[i] = product(array, i)
   end
   output
 end
 
-def sum(array, index_to_exclude)
+def product(array, index_to_exclude)
   total = []
   array.each_with_index do |element, index|
     total << element unless index == index_to_exclude
