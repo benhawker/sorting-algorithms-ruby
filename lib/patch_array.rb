@@ -21,7 +21,7 @@
 # nums = [1, 2, 2], n = 5
 # Return 0.
 
-## To be completed- only passing the first 2 test cases.
+## Solve the 3 above test cases.
 ## Initial attempt using Brute force making use of Ruby STDLIB Array#combination
 def solve(array, n)
   num_of_patches = 0
@@ -29,8 +29,8 @@ def solve(array, n)
   1.upto(n).each do |i|
     if !array.include?(i)
       array << i
-      num_of_patches += 1
       return num_of_patches if patched?(array, n)
+      num_of_patches += 1
     end
   end
 end
