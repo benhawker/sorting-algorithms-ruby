@@ -3,6 +3,7 @@
 # array = ["justification", "This", "is", "an", "example", "of", "text.", "justification", "This", "is", "an", "example", "of", "text."]
 # array = %w(Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.)
 
+## To be completed
 ## Has nasty side effect of modifying the original array.
 ## Failing on some larger sentences where num_of_chars_to_fill < num_of_spaces & we calculate zero
 def justify(array, max_length=16)
@@ -37,11 +38,15 @@ def justify(array, max_length=16)
     if num_of_chars_to_fill % num_of_spaces == 0
       0.upto(num_of_spaces-1) do |space|
         line[space] << " " * (num_of_chars_to_fill/num_of_spaces)
-        # if num_of_chars_to_fill > 0 && num_of_chars_to_fill/num_of_spaces == 0
-        #   ## Add the num_of_chars_to_fill to the most lefterly spaces.
-        #   counter = 0
-        #   line[space] << " " unless
-        # end
+        ##will only occur when number of chars to fill is less than the num of spaces.
+        if num_of_chars_to_fill > 0 && num_of_chars_to_fill/num_of_spaces == 0
+          ## Add the num_of_chars_to_fill to the most lefterly spaces.
+          count = 0
+          until count == num_of_chars_to_fill
+            line[count] << " "
+            count += 1
+          end
+        end
       end
     elsif num_of_chars_to_fill % num_of_spaces != 0
       if num_of_chars_to_fill == 1
@@ -50,9 +55,15 @@ def justify(array, max_length=16)
         0.upto(num_of_spaces-1) do |space|
           line[space] << " " * (num_of_chars_to_fill/num_of_spaces)
           line[0] << " "
-          # if num_of_chars_to_fill > 0 && num_of_chars_to_fill/num_of_spaces
-            ## Add the num_of_chars_to_fill to the most lefterly spaces.
-          # end
+          if num_of_chars_to_fill > 0 && num_of_chars_to_fill/num_of_spaces == 0
+          ## Add the num_of_chars_to_fill to the most lefterly spaces.
+          ## Count == as we have already placed one.
+            count = 1
+            until count == num_of_chars_to_fill
+              line[count] << " "
+              count += 1
+            end
+          end
         end
       end
     end
