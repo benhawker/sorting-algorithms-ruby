@@ -30,7 +30,6 @@
 
 ##TODO
 def solve(hash)
-  output = {}
   manager_sizing = Hash.new { |h, k| h[k] = [] }
   employees = hash.keys
   managers = hash.values
@@ -43,7 +42,7 @@ def solve(hash)
     manager_map[manager] << employee
   end
 
-  ##Place in the regular emplyees.
+  ##Place in the regular employees.
   manager_map.each do |man, emp|
     managers.each do |manager|
       if !emp.include?(manager)
@@ -52,19 +51,25 @@ def solve(hash)
     end
   end
 
-  ##Then deal with the Managers of Managers
-  # manager_map.each do |man, emp|
-  #   managers.each do |manager|
-  #     if emp.include?(manager)
-  #       emp.each do |report|
-  #         # count = 0
-  #         if manager_sizing[report]
-  #           manager_sizing[man] << manager_map[report].size
-  #         else
-  #           manager_sizing[man] << 1
-  #         end
-  #       end
-  #     end
-  #   end
-  # end
+  #Iterate uniq managers
+  managers.uniq.each do |manager|
+    # Only run below for managers not already included.
+    # i.e. not for people who are not managers of managers
+    if manager_sizing.key(manager).nil?
+      reports = manager_map[manager]
+
+      #Remove the manager himeself for now.
+      reports.delete(manager)
+
+      count = 0
+
+      reports.each do |report|
+        count += manager_sizing[report]
+      end
+      manager_sizing[manager] = (count + reports.size)
+    end
+    # do nothing
+  end
+  manager_sizing
 end
+
