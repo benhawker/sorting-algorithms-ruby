@@ -4,6 +4,58 @@
 
  # ["((()))", "(())()", "()()()", "()(())", "()()()"]
 
+def solve_two(n)
+  solutions = []
+  counter = n-1
+
+  counter.times do |count|
+    str = ''
+    str += "("
+    1.upto(n-(count)).each do |i|
+    ["(", ")"].each do |br|
+        str += br
+      end
+    end
+
+    str += ")"
+    solutions << str
+  end
+
+  [1,2].each do |top_i|
+    counter.times do |count|
+      str = ''
+      if top_i.odd?
+        str += action_one(n-(count+1))
+        str += action_two(count+1)
+      else
+        str += action_two(count+1)
+        str += action_one(n-(count+1))
+      end
+      solutions << str
+    end
+  end
+  solutions.uniq
+end
+
+def action_one(x)
+  str = ""
+  ["(", ")"].each do |br|
+    1.upto(x).each do |i|
+      str += br
+    end
+  end
+  str
+end
+
+def action_two(x)
+  str = ""
+  x.times do |i|
+    str += "("
+    str += ")"
+  end
+  str
+end
+
 # ------------------------------- #
 
 def solve_one(n)
